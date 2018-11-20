@@ -1,0 +1,52 @@
+﻿@model Zajezdnia_Tramwajowa.Controllers.MaszynistaAndPrzejazdy
+
+@{
+    ViewBag.Title = "Przejazdy";
+}
+
+<h2>Przejazdy</h2>
+
+<div>
+    <h4>Maszynista</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.m.IDMaszynisty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.m.IDMaszynisty)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.m.Stawka)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.m.Stawka)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.m.Imie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.m.Imie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.m.Nazwisko)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.m.Nazwisko)
+        </dd>
+
+    </dl>
+</div>
+@Html.Partial("~/Views/Maszynista/Details_Przejazdy.cshtml", Model.Przejazdy);
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.m.IDMaszynisty }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

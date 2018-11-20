@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6a82cc040aa14e4abd0d156afa487627" Name="Diagram1">
+        <EntityTypeShape EntityType="ZajezdniaTramwajowaModel.Maszynista" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZajezdniaTramwajowaModel.Przejazd" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZajezdniaTramwajowaModel.Przystanek" Width="1.5" PointX="3" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZajezdniaTramwajowaModel.Tramwaj" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZajezdniaTramwajowaModel.Trasa" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZajezdniaTramwajowaModel.uzyciePrzystankow" Width="1.5" PointX="5.75" PointY="2" IsExpanded="true" />
+        <AssociationConnector Association="ZajezdniaTramwajowaModel.FK__Przejazd__IDMasz__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="ZajezdniaTramwajowaModel.FK__Przejazd__IDTram__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="ZajezdniaTramwajowaModel.FK__Przejazd__IDTras__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="ZajezdniaTramwajowaModel.FK__Przystane__IDTra__440B1D61" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
