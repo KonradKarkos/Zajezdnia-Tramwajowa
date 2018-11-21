@@ -3,19 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Zajezdnia_Tramwajowa.Models;
 
 namespace Zajezdnia_Tramwajowa.Controllers
 {
-    public class MaszynistaAndPrzejazdy
-    {
-        public Maszynista m { get; set; }
-        public IEnumerable<Przejazd> Przejazdy { get; set; }
-    }
-    public class MaszynistaAndPrzejazd
-    {
-        public Maszynista m { get; set; }
-        public Przejazd p { get; set; }
-    }
     public class MaszynistaController : Controller
     {
         ZajezdniaTramwajowaEntities db = new ZajezdniaTramwajowaEntities();
@@ -31,7 +22,7 @@ namespace Zajezdnia_Tramwajowa.Controllers
         {
             List<Przejazd> p = db.Przejazd.ToList();
             p.RemoveAll(r => !r.IDMaszynisty.Equals(id));
-            MaszynistaAndPrzejazdy d = new MaszynistaAndPrzejazdy { m = db.Maszynista.Find(id), Przejazdy = p };
+            MaszynistaAndPrzejazdy d = new MaszynistaAndPrzejazdy { M = db.Maszynista.Find(id), Przejazdy = p };
             return View(d);
         }
 
@@ -46,28 +37,19 @@ namespace Zajezdnia_Tramwajowa.Controllers
         public ActionResult Create(Maszynista maszynista)
         {
             ViewBag.Exception = null;
-
-
             try
             {
                 db.InsertMaszynista(maszynista.Stawka, maszynista.Imie, maszynista.Nazwisko);
             }
             catch (Exception e)
             {
-
                 String innerMessage = (e.InnerException != null)
                   ? e.InnerException.Message
                   : "Błędne dane";
-
-                
                 ViewBag.Exception = innerMessage;
                 return View(maszynista);
             }
-
-
-
             return RedirectToAction("Index");
-
         }
 
         // GET: Maszynista/Edit/5
@@ -119,9 +101,56 @@ namespace Zajezdnia_Tramwajowa.Controllers
                 return View(m);
             }
         }
-        public ActionResult Dodaj_przejazd()
+        public ActionResult Dodaj_przejazd(Maszynista ma)
         {
-            return View();
+            MaszynistaAndPrzejazd d = new MaszynistaAndPrzejazd {Masz = ma,Prze=new Przejazd() };
+            return View(d);
+        }
+
+        [HttpPost]
+        public ActionResult Dodaj_przejazd(MaszynistaAndPrzejazd maszynista)
+        {
+            ViewBag.Exception = null;
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    db.Przejazd.Add(maszynista.Prze);
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception e)
+            {
+                String innerMessage = (e.InnerException != null)
+                  ? e.InnerException.Message
+                  : "Błędne dane";
+                ViewBag.Exception = innerMessage;
+                maszynista.Prze = new Przejazd();
+                return View(maszynista);
+            }
+            return RedirectToAction("Details", new { id=maszynista.Masz.IDMaszynisty});
+        }
+        // GET: Maszynista/Delete/5
+        public ActionResult Usun_przejazd(int id)
+        {
+            Przejazd m = db.Przejazd.Find(id);
+            return View(m);
+        }
+
+        // POST: Maszynista/Delete/5
+        [HttpPost]
+        public ActionResult Usun_przejazd(int id, Przejazd m)
+        {
+            try
+            {
+                db.Przejazd.Remove(db.Przejazd.Single(ma => ma.IDMaszynisty == id));
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View(m);
+            }
         }
     }
 }

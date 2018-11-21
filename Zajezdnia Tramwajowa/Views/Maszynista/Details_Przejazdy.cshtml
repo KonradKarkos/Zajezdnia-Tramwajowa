@@ -43,10 +43,9 @@
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.IDPrzejazdu }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.IDPrzejazdu })
+                @Html.ActionLink("Delete", "Usun_przejazd", new { id = item.IDPrzejazdu })
             </td>
         </tr>
     }
 
 </table>
-@Html.ActionLink("Dodaj Przejazd", "Dodaj_przejazd")
