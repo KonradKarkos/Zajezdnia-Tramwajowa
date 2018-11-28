@@ -1,4 +1,4 @@
-﻿@model Zajezdnia_Tramwajowa.Models.MaszynistaAndPrzejazdy
+﻿@model Maszynista
 
 @{
     ViewBag.Title = "Przejazdy";
@@ -12,42 +12,42 @@
     <dl class="dl-horizontal">
 
         <dt>
-            @Html.DisplayNameFor(model => model.M.IDMaszynisty)
+            @Html.DisplayNameFor(model => model.IDMaszynisty)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.M.IDMaszynisty)
+            @Html.DisplayFor(model => model.IDMaszynisty)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.M.Stawka)
+            @Html.DisplayNameFor(model => model.Stawka)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.M.Stawka)
+            @Html.DisplayFor(model => model.Stawka)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.M.Imie)
+            @Html.DisplayNameFor(model => model.Imie)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.M.Imie)
+            @Html.DisplayFor(model => model.Imie)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.M.Nazwisko)
+            @Html.DisplayNameFor(model => model.Nazwisko)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.M.Nazwisko)
+            @Html.DisplayFor(model => model.Nazwisko)
         </dd>
 
     </dl>
 </div>
-@Html.Partial("~/Views/Maszynista/Details_Przejazdy.cshtml", Model.Przejazdy)
-@Html.ActionLink("Dodaj Przejazd", "Dodaj_przejazd", new { IDMaszynisty = Model.M.IDMaszynisty, Stawka = Model.M.Stawka, Imie = Model.M.Imie, Nazwisko = Model.M.Nazwisko })
+@Html.Partial("~/Views/Maszynista/Details_Przejazdy.cshtml", Model.Przejazd)
+@Html.ActionLink("Dodaj Przejazd", "Dodaj_przejazd", new { IdPrze = Model.Przejazd.First().IDPrzejazdu })
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.M.IDMaszynisty }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edytuj", "Edit", new { id = Model.IDMaszynisty }) |
+    @Html.ActionLink("Powrót do listy motorniczych", "Index")
 </p>

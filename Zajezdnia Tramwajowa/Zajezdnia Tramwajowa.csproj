@@ -164,8 +164,6 @@
     <Compile Include="Maszynista.cs">
       <DependentUpon>ZajezdniaTramwajowa.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\MaszynistaAndPrzejazd.cs" />
-    <Compile Include="Models\MaszynistaAndPrzejazdy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Przejazd.cs">
       <DependentUpon>ZajezdniaTramwajowa.tt</DependentUpon>
@@ -267,6 +265,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Zajezdnia_Tramwajowa.Models;
 
 namespace Zajezdnia_Tramwajowa.Controllers
 {
@@ -20,10 +19,7 @@ namespace Zajezdnia_Tramwajowa.Controllers
         // GET: Maszynista/Details
         public ActionResult Details(int id)
         {
-            List<Przejazd> p = db.Przejazd.ToList();
-            p.RemoveAll(r => !r.IDMaszynisty.Equals(id));
-            MaszynistaAndPrzejazdy d = new MaszynistaAndPrzejazdy { M = db.Maszynista.Find(id), Przejazdy = p };
-            return View(d);
+            return View(db.Maszynista.Find(id));
         }
 
         // GET: Maszynista/Create
@@ -101,21 +97,20 @@ namespace Zajezdnia_Tramwajowa.Controllers
                 return View(m);
             }
         }
-        public ActionResult Dodaj_przejazd(Maszynista ma)
+        public ActionResult Dodaj_przejazd(int IdPrze)
         {
-            MaszynistaAndPrzejazd d = new MaszynistaAndPrzejazd {Masz = ma,Prze=new Przejazd() };
-            return View(d);
+            return View(db.Przejazd.Find(IdPrze));
         }
 
         [HttpPost]
-        public ActionResult Dodaj_przejazd(MaszynistaAndPrzejazd maszynista)
+        public ActionResult Dodaj_przejazd(Przejazd przejazd)
         {
             ViewBag.Exception = null;
             try
             {
                 if (ModelState.IsValid)
                 {
-                    db.Przejazd.Add(maszynista.Prze);
+                    db.Przejazd.Add(przejazd);
                     db.SaveChanges();
                 }
             }
@@ -125,10 +120,9 @@ namespace Zajezdnia_Tramwajowa.Controllers
                   ? e.InnerException.Message
                   : "Błędne dane";
                 ViewBag.Exception = innerMessage;
-                maszynista.Prze = new Przejazd();
-                return View(maszynista);
+                return View(przejazd);
             }
-            return RedirectToAction("Details", new { id=maszynista.Masz.IDMaszynisty});
+            return RedirectToAction("Details", new { id= przejazd.IDMaszynisty});
         }
         // GET: Maszynista/Delete/5
         public ActionResult Usun_przejazd(int id)
@@ -143,7 +137,7 @@ namespace Zajezdnia_Tramwajowa.Controllers
         {
             try
             {
-                db.Przejazd.Remove(db.Przejazd.Single(ma => ma.IDMaszynisty == id));
+                db.Przejazd.Remove(db.Przejazd.Find(id));
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

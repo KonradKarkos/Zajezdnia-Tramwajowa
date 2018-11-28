@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Zajezdnia_Tramwajowa.Maszynista>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Lista motorniczych";
 }
 
 <h2>Maszyniści</h2>
@@ -40,8 +40,8 @@
             @Html.DisplayFor(modelItem => item.Nazwisko)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.IDMaszynisty }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.IDMaszynisty }) |
+            @Html.ActionLink("Edytuj", "Edit", new { id = item.IDMaszynisty }) |
+            @Html.ActionLink("Usuń", "Delete", new { id = item.IDMaszynisty }) |
             @Html.ActionLink("Przejazdy", "Details", new { id = item.IDMaszynisty })
         </td>
     </tr>

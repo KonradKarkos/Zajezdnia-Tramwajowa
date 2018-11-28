@@ -1,14 +1,14 @@
 ﻿@model Zajezdnia_Tramwajowa.Maszynista
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Usuń";
 }
 
 <h2>Delete</h2>
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>Maszynista</h4>
+    <h4>Motorniczy</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -41,8 +41,8 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <input type="submit" value="Usuń" class="btn btn-default" /> |
+            @Html.ActionLink("Powrót do listy motorniczych", "Index")
         </div>
     }
 </div>

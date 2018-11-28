@@ -1,44 +1,44 @@
-﻿@model Zajezdnia_Tramwajowa.Models.MaszynistaAndPrzejazd
+﻿@model Przejazd
 @{
-    ViewBag.Title = "Dodaj_przejazd";
+    ViewBag.Title = "Dodaj przejazd";
 }
 
 <h2>Dodaj Przejazd</h2>
 <div>
-    <h4>Maszynista</h4>
+    <h4>Motorniczy</h4>
     <hr />
     <dl class="dl-horizontal">
 
         <dt>
-            @Html.DisplayNameFor(model => model.Masz.IDMaszynisty)
+            @Html.DisplayNameFor(model => model.Maszynista.IDMaszynisty)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Masz.IDMaszynisty)
+            @Html.DisplayFor(model => model.Maszynista.IDMaszynisty)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Masz.Stawka)
+            @Html.DisplayNameFor(model => model.Maszynista.Stawka)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Masz.Stawka)
+            @Html.DisplayFor(model => model.Maszynista.Stawka)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Masz.Imie)
+            @Html.DisplayNameFor(model => model.Maszynista.Imie)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Masz.Imie)
+            @Html.DisplayFor(model => model.Maszynista.Imie)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Masz.Nazwisko)
+            @Html.DisplayNameFor(model => model.Maszynista.Nazwisko)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Masz.Nazwisko)
+            @Html.DisplayFor(model => model.Maszynista.Nazwisko)
         </dd>
 
     </dl>
@@ -53,58 +53,34 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
+            @Html.LabelFor(model => model.IDMaszynisty, "IDMotorniczego", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.HiddenFor(model => model.Prze.IDMaszynisty, new { @Value = Model.Masz.IDMaszynisty })
-                @Html.ValidationMessageFor(model => model.Prze.IDMaszynisty, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.IDMaszynisty, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.IDMaszynisty, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Prze.IDTramwaju, "IDTramwaju", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.IDTramwaju, "IDTramwaju", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Prze.IDTramwaju, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Prze.IDTramwaju, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.IDTramwaju, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.IDTramwaju, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Prze.IDTrasy, "IDTrasy", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.IDTrasy, "IDTrasy", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Prze.IDTrasy, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Prze.IDTrasy, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.IDTrasy, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.IDTrasy, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Prze.CzasOdjazdu, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.CzasOdjazdu, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Prze.CzasOdjazdu, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Prze.CzasOdjazdu, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-10">
-                @Html.HiddenFor(model => model.Masz.IDMaszynisty, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Masz.IDMaszynisty, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-10">
-                @Html.HiddenFor(model => model.Masz.Stawka, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Masz.Stawka, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-10">
-                @Html.HiddenFor(model => model.Masz.Imie, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Masz.Imie, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-10">
-                @Html.HiddenFor(model => model.Masz.Nazwisko, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Masz.Nazwisko, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.CzasOdjazdu, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CzasOdjazdu, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">
@@ -118,7 +94,7 @@
 <div>
 
 </div>
-@Html.ActionLink("Back to List", "Details", new { id=Model.Masz.IDMaszynisty})
+@Html.ActionLink("Powrót do spisu przejazdów", "Details", new { id=Model.IDMaszynisty})
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

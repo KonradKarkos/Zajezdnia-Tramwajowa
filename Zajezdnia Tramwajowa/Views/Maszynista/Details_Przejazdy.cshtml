@@ -1,8 +1,6 @@
 ﻿@model IEnumerable<Zajezdnia_Tramwajowa.Przejazd>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
 <table class="table">
     <tr>
         <th>
@@ -42,8 +40,8 @@
                 @Html.DisplayFor(modelItem => item.Trasa.NazwaTrasy)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.IDPrzejazdu }) |
-                @Html.ActionLink("Delete", "Usun_przejazd", new { id = item.IDPrzejazdu })
+                @Html.ActionLink("Edytuj", "Edit", new { id = item.IDPrzejazdu }) |
+                @Html.ActionLink("Usuń", "Usun_przejazd", new {id=item.IDPrzejazdu, m = item })
             </td>
         </tr>
     }
