@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\kamil\source\repos\Zajezdnia Tramwajowa\Zajezdnia Tramwajowa\ZajezdniaTramwajowa.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Konrad\Downloads\Zajezdnia Tramwajowa\Zajezdnia Tramwajowa\Zajezdnia Tramwajowa\ZajezdniaTramwajowa.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

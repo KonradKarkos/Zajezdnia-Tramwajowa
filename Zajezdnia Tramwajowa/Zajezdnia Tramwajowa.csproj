@@ -45,6 +45,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DnsClient, Version=1.0.7.0, Culture=neutral, PublicKeyToken=4574bb5573c51424, processorArchitecture=MSIL">
+      <HintPath>..\packages\DnsClient.1.0.7\lib\net45\DnsClient.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -52,9 +55,24 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MongoDB.Bson, Version=2.7.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Bson.2.7.2\lib\net45\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver, Version=2.7.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Driver.2.7.2\lib\net45\MongoDB.Driver.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver.Core, Version=2.7.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Driver.Core.2.7.2\lib\net45\MongoDB.Driver.Core.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.3.0\lib\netstandard1.1\System.Buffers.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.0.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -158,12 +176,15 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MaszynistaController.cs" />
     <Compile Include="Controllers\PrzejazdController.cs" />
+    <Compile Include="Controllers\PrzystanekController.cs" />
+    <Compile Include="Controllers\TrasaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Maszynista.cs">
       <DependentUpon>ZajezdniaTramwajowa.tt</DependentUpon>
     </Compile>
+    <Compile Include="MongoDB\MongoDBClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Przejazd.cs">
       <DependentUpon>ZajezdniaTramwajowa.tt</DependentUpon>
@@ -175,9 +196,6 @@
       <DependentUpon>ZajezdniaTramwajowa.tt</DependentUpon>
     </Compile>
     <Compile Include="Trasa.cs">
-      <DependentUpon>ZajezdniaTramwajowa.tt</DependentUpon>
-    </Compile>
-    <Compile Include="uzyciePrzystankow.cs">
       <DependentUpon>ZajezdniaTramwajowa.tt</DependentUpon>
     </Compile>
     <Compile Include="ZajezdniaTramwajowa.Context.cs">
@@ -262,6 +280,20 @@
     <Content Include="Views\Maszynista\Details_Przejazdy.cshtml" />
     <Content Include="Views\Maszynista\Dodaj_przejazd.cshtml" />
     <Content Include="Views\Maszynista\Usun_przejazd.cshtml" />
+    <Content Include="Views\Przejazd\Details.cshtml" />
+    <Content Include="Views\Przejazd\Create.cshtml" />
+    <Content Include="Views\Przejazd\Edit.cshtml" />
+    <Content Include="Views\Przejazd\Delete.cshtml" />
+    <Content Include="Views\Trasa\Create.cshtml" />
+    <Content Include="Views\Trasa\Delete.cshtml" />
+    <Content Include="Views\Trasa\Details.cshtml" />
+    <Content Include="Views\Trasa\Edit.cshtml" />
+    <Content Include="Views\Trasa\Index.cshtml" />
+    <Content Include="Views\Przystanek\Create.cshtml" />
+    <Content Include="Views\Przystanek\Delete.cshtml" />
+    <Content Include="Views\Przystanek\Details.cshtml" />
+    <Content Include="Views\Przystanek\Edit.cshtml" />
+    <Content Include="Views\Przystanek\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,26 @@
+﻿@model Zajezdnia_Tramwajowa.Trasa
+
+@{
+    ViewBag.Title = "Szczegóły";
+}
+
+<h2>Szczegóły</h2>
+
+<div>
+    <h4>Trasa</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NazwaTrasy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NazwaTrasy)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edytuj", "Edit", new { id = Model.IDTrasy }) |
+    @Html.ActionLink("Powrót do listy", "Index")
+</p>

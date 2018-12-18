@@ -1,0 +1,32 @@
+﻿@model Zajezdnia_Tramwajowa.Trasa
+
+@{
+    ViewBag.Title = "Usuwanie";
+}
+
+<h2>Usuń</h2>
+
+<h3>Jesteś pewien, że chcesz usunąć tę trasę?</h3>
+<div>
+    <h4>Trasa</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NazwaTrasy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NazwaTrasy)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Usuń" class="btn btn-default" /> |
+            @Html.ActionLink("Powrót do listy tras", "Index")
+        </div>
+    }
+</div>

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Zajezdnia_Tramwajowa.MongoDB;
 
 namespace Zajezdnia_Tramwajowa.Controllers
 {
@@ -39,10 +41,12 @@ namespace Zajezdnia_Tramwajowa.Controllers
             }
             catch (Exception e)
             {
+
                 String innerMessage = (e.InnerException != null)
                   ? e.InnerException.Message
                   : "Błędne dane";
                 ViewBag.Exception = innerMessage;
+
                 return View(maszynista);
             }
             return RedirectToAction("Index");
@@ -59,20 +63,41 @@ namespace Zajezdnia_Tramwajowa.Controllers
         [HttpPost]
         public ActionResult Edit(int id, Maszynista m)
         {
+
+
+            ViewBag.Exception = null;
+
             try
             {
-                if (ModelState.IsValid)
-                {
-                    db.Entry(m).State = System.Data.Entity.EntityState.Modified;
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
+                db.Entry(m).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+
+                return RedirectToAction("Index");
+            }
+            catch (DbUpdateConcurrencyException ex)
+            {
+
+                MongoDBClient.InsertError(new ErrorMessage(ex.InnerException.Message, DateTime.Now));
+                ViewBag.Exception = "Ktoś zmienił dane, proszę anuluj obecną operację w celu pobrania najnowszych danych";
+                var entry = ex.Entries.Single();
+                var clientValues = (Maszynista)entry.Entity;
+                var databaseEntry = entry.GetDatabaseValues();
+                var databaseValues = (Maszynista)databaseEntry.ToObject();
+
+
+
+                if (databaseValues.Stawka != clientValues.Stawka)
+                    ModelState.AddModelError("Stawka", "Wartość w bazie danych: "
+                        + databaseValues.Stawka);
+                if (databaseValues.Imie != clientValues.Imie)
+                    ModelState.AddModelError("Imie", "Wartość w bazie danych: "
+                        + databaseValues.Imie);
+                if (databaseValues.Nazwisko != clientValues.Nazwisko)
+                    ModelState.AddModelError("Nazwisko", "Wartość w bazie danych: " + databaseValues.Nazwisko);
+
                 return View(m);
             }
-            catch
-            {
-                return View();
-            }
+
         }
 
         // GET: Maszynista/Delete/5
@@ -122,7 +147,7 @@ namespace Zajezdnia_Tramwajowa.Controllers
                 ViewBag.Exception = innerMessage;
                 return View(przejazd);
             }
-            return RedirectToAction("Details", new { id= przejazd.IDMaszynisty});
+            return RedirectToAction("Details", new { id = przejazd.IDMaszynisty });
         }
         // GET: Maszynista/Delete/5
         public ActionResult Usun_przejazd(int id)

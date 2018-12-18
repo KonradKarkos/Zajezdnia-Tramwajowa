@@ -19,6 +19,7 @@ namespace Zajezdnia_Tramwajowa
         public int IDTramwaju { get; set; }
         public int IDTrasy { get; set; }
         public System.DateTime CzasOdjazdu { get; set; }
+        public byte[] RowVersion { get; set; }
     
         public virtual Maszynista Maszynista { get; set; }
         public virtual Tramwaj Tramwaj { get; set; }

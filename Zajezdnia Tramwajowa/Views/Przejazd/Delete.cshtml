@@ -1,12 +1,12 @@
 ﻿@model Zajezdnia_Tramwajowa.Przejazd
 
 @{
-    ViewBag.Title = "Usun przejazd";
+    ViewBag.Title = "Usuń";
 }
 
-<h2>Usun przejazd</h2>
+<h2>Usuń</h2>
 
-<h3>Jesteś pewien?</h3>
+<h3>Jesteś pewien, że chcesz usunąć ten przejazd?</h3>
 <div>
     <h4>Przejazd</h4>
     <hr />
@@ -49,8 +49,8 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Powrót do listy Motorniczych", "Index")
+            <input type="submit" value="Usuń" class="btn btn-default" /> |
+            @Html.ActionLink("Powrót do spisu przejazdów", "Index")
         </div>
     }
 </div>

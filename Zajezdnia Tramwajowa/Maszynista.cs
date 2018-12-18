@@ -11,7 +11,6 @@ namespace Zajezdnia_Tramwajowa
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     
     public partial class Maszynista
     {
@@ -22,15 +21,10 @@ namespace Zajezdnia_Tramwajowa
         }
     
         public int IDMaszynisty { get; set; }
-
-        [Required(ErrorMessage ="Stawka musi byæ podana")]
         public decimal Stawka { get; set; }
-        [Required(ErrorMessage = "Imie musi byæ podane")]
-        [MinLength(3, ErrorMessage = "Imie musi mieæ minimalnie 3 litery")]
-        [MaxLength(20, ErrorMessage = "Imie musi mieæ minimalnie 20 liter")]
         public string Imie { get; set; }
-        [Required(ErrorMessage = "Nazwisko musi byæ podane")]
         public string Nazwisko { get; set; }
+        public byte[] RowVersion { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Przejazd> Przejazd { get; set; }

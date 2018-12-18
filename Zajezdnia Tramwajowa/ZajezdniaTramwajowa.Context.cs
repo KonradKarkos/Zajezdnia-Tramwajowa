@@ -32,7 +32,6 @@ namespace Zajezdnia_Tramwajowa
         public virtual DbSet<Przystanek> Przystanek { get; set; }
         public virtual DbSet<Tramwaj> Tramwaj { get; set; }
         public virtual DbSet<Trasa> Trasa { get; set; }
-        public virtual DbSet<uzyciePrzystankow> uzyciePrzystankow { get; set; }
     
         public virtual int InsertMaszynista(Nullable<decimal> stawka, string imie, string nazwisko)
         {
