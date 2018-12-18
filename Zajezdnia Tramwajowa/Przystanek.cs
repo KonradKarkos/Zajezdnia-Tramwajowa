@@ -17,6 +17,7 @@ namespace Zajezdnia_Tramwajowa
         public int IDPrzystanku { get; set; }
         public int IDTrasy { get; set; }
         public string NazwaPrzystanku { get; set; }
+        public byte[] RowVersion { get; set; }
     
         public virtual Trasa Trasa { get; set; }
     }

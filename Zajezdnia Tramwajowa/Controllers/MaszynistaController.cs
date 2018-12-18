@@ -46,6 +46,7 @@ namespace Zajezdnia_Tramwajowa.Controllers
                   ? e.InnerException.Message
                   : "Błędne dane";
                 ViewBag.Exception = innerMessage;
+                MongoDBClient.InsertError(new ErrorMessage(e.InnerException.Message, DateTime.Now));
 
                 return View(maszynista);
             }
@@ -145,6 +146,8 @@ namespace Zajezdnia_Tramwajowa.Controllers
                   ? e.InnerException.Message
                   : "Błędne dane";
                 ViewBag.Exception = innerMessage;
+                MongoDBClient.InsertError(new ErrorMessage(e.InnerException.Message, DateTime.Now));
+                przejazd.Maszynista = db.Maszynista.Single(ma => ma.IDMaszynisty == przejazd.IDMaszynisty);
                 return View(przejazd);
             }
             return RedirectToAction("Details", new { id = przejazd.IDMaszynisty });

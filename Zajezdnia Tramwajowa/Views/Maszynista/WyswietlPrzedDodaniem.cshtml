@@ -1,0 +1,42 @@
+﻿@model Zajezdnia_Tramwajowa.Maszynista
+
+@{
+    ViewBag.Title = "WyswietlPrzedDodaniem";
+}
+
+<h2>WyswietlPrzedDodaniem</h2>
+
+<div>
+    <h4>Maszynista</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Stawka)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Stawka)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Imie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Imie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nazwisko)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nazwisko)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.Partial("~/Views/Maszynista/Dodaj_przejazd.cshtml", new Przejazd() { IDMaszynisty=Model.IDMaszynisty})
+    @Html.ActionLink("Powrót do spisu przejazdów", "Details", new { id = Model.IDMaszynisty })
+</p>

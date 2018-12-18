@@ -33,6 +33,7 @@
           <Property Name="IDPrzystanku" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IDTrasy" Type="int" Nullable="false" />
           <Property Name="NazwaPrzystanku" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
         </EntityType>
         <EntityType Name="Tramwaj">
           <Key>
@@ -40,6 +41,7 @@
           </Key>
           <Property Name="IDTramwaju" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ModelPojazdu" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
         </EntityType>
         <EntityType Name="Trasa">
           <Key>
@@ -47,9 +49,8 @@
           </Key>
           <Property Name="IDTrasy" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NazwaTrasy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'ZajezdniaTramwajowa.dbo.uzyciePrzystankow' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <Association Name="FK__Przejazd__IDMasz__3E52440B">
           <End Role="Maszynista" Type="Self.Maszynista" Multiplicity="1" />
           <End Role="Przejazd" Type="Self.Przejazd" Multiplicity="*" />
@@ -143,7 +144,7 @@ warning 6002: The table/view 'ZajezdniaTramwajowa.dbo.uzyciePrzystankow' does no
           <Property Name="Imie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Nazwisko" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Przejazd" Relationship="Self.FK__Przejazd__IDMasz__3E52440B" FromRole="Maszynista" ToRole="Przejazd" />
-          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" ConcurrencyMode="None" />
         </EntityType>
         <EntityType Name="Przejazd">
           <Key>
@@ -157,7 +158,7 @@ warning 6002: The table/view 'ZajezdniaTramwajowa.dbo.uzyciePrzystankow' does no
           <NavigationProperty Name="Maszynista" Relationship="Self.FK__Przejazd__IDMasz__3E52440B" FromRole="Przejazd" ToRole="Maszynista" />
           <NavigationProperty Name="Tramwaj" Relationship="Self.FK__Przejazd__IDTram__3F466844" FromRole="Przejazd" ToRole="Tramwaj" />
           <NavigationProperty Name="Trasa" Relationship="Self.FK__Przejazd__IDTras__403A8C7D" FromRole="Przejazd" ToRole="Trasa" />
-          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" ConcurrencyMode="Fixed" />
+          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" ConcurrencyMode="None" />
         </EntityType>
         <EntityType Name="Przystanek">
           <Key>
@@ -167,6 +168,7 @@ warning 6002: The table/view 'ZajezdniaTramwajowa.dbo.uzyciePrzystankow' does no
           <Property Name="IDTrasy" Type="Int32" Nullable="false" />
           <Property Name="NazwaPrzystanku" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Trasa" Relationship="Self.FK__Przystane__IDTra__440B1D61" FromRole="Przystanek" ToRole="Trasa" />
+          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" ConcurrencyMode="None" />
         </EntityType>
         <EntityType Name="Tramwaj">
           <Key>
@@ -175,6 +177,7 @@ warning 6002: The table/view 'ZajezdniaTramwajowa.dbo.uzyciePrzystankow' does no
           <Property Name="IDTramwaju" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ModelPojazdu" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Przejazd" Relationship="Self.FK__Przejazd__IDTram__3F466844" FromRole="Tramwaj" ToRole="Przejazd" />
+          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" ConcurrencyMode="None" />
         </EntityType>
         <EntityType Name="Trasa">
           <Key>
@@ -184,6 +187,7 @@ warning 6002: The table/view 'ZajezdniaTramwajowa.dbo.uzyciePrzystankow' does no
           <Property Name="NazwaTrasy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Przejazd" Relationship="Self.FK__Przejazd__IDTras__403A8C7D" FromRole="Trasa" ToRole="Przejazd" />
           <NavigationProperty Name="Przystanek" Relationship="Self.FK__Przystane__IDTra__440B1D61" FromRole="Trasa" ToRole="Przystanek" />
+          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" ConcurrencyMode="None" />
         </EntityType>
         <Association Name="FK__Przejazd__IDMasz__3E52440B">
           <End Role="Maszynista" Type="Self.Maszynista" Multiplicity="1" />
@@ -293,6 +297,7 @@ warning 6002: The table/view 'ZajezdniaTramwajowa.dbo.uzyciePrzystankow' does no
           <EntitySetMapping Name="Przystanek">
             <EntityTypeMapping TypeName="ZajezdniaTramwajowaModel.Przystanek">
               <MappingFragment StoreEntitySet="Przystanek">
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
                 <ScalarProperty Name="IDPrzystanku" ColumnName="IDPrzystanku" />
                 <ScalarProperty Name="IDTrasy" ColumnName="IDTrasy" />
                 <ScalarProperty Name="NazwaPrzystanku" ColumnName="NazwaPrzystanku" />
@@ -302,6 +307,7 @@ warning 6002: The table/view 'ZajezdniaTramwajowa.dbo.uzyciePrzystankow' does no
           <EntitySetMapping Name="Tramwaj">
             <EntityTypeMapping TypeName="ZajezdniaTramwajowaModel.Tramwaj">
               <MappingFragment StoreEntitySet="Tramwaj">
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
                 <ScalarProperty Name="IDTramwaju" ColumnName="IDTramwaju" />
                 <ScalarProperty Name="ModelPojazdu" ColumnName="ModelPojazdu" />
               </MappingFragment>
@@ -310,6 +316,7 @@ warning 6002: The table/view 'ZajezdniaTramwajowa.dbo.uzyciePrzystankow' does no
           <EntitySetMapping Name="Trasa">
             <EntityTypeMapping TypeName="ZajezdniaTramwajowaModel.Trasa">
               <MappingFragment StoreEntitySet="Trasa">
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
                 <ScalarProperty Name="IDTrasy" ColumnName="IDTrasy" />
                 <ScalarProperty Name="NazwaTrasy" ColumnName="NazwaTrasy" />
               </MappingFragment>

@@ -45,8 +45,17 @@
 
     </dl>
 </div>
+@if (Model.Przejazd != null)
+{
 @Html.Partial("~/Views/Maszynista/Details_Przejazdy.cshtml", Model.Przejazd)
+}
+@if (Model.Przejazd.Count > 0)
+{
+    if (Model.Przejazd.First() != null)
+    {
 @Html.ActionLink("Dodaj Przejazd", "Dodaj_przejazd", new { IdPrze = Model.Przejazd.First().IDPrzejazdu })
+    }
+}
 <p>
     @Html.ActionLink("Edytuj", "Edit", new { id = Model.IDMaszynisty }) |
     @Html.ActionLink("Powrót do listy motorniczych", "Index")

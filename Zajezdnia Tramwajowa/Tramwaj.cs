@@ -22,6 +22,7 @@ namespace Zajezdnia_Tramwajowa
     
         public int IDTramwaju { get; set; }
         public string ModelPojazdu { get; set; }
+        public byte[] RowVersion { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Przejazd> Przejazd { get; set; }
