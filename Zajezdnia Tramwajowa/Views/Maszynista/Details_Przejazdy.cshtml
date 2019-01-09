@@ -41,7 +41,7 @@
                 @Html.DisplayFor(modelItem => item.Trasa.NazwaTrasy)
             </td>
             <td>
-                @Html.ActionLink("Edytuj", "Edit", new { id = item.IDPrzejazdu }) |
+                @Html.ActionLink("Edytuj", "Edytuj_przejazd", new { id = item.IDPrzejazdu }) |
                 @Html.ActionLink("Usuń", "Usun_przejazd", new { id = item.IDPrzejazdu, m = item })
             </td>
         </tr>

@@ -294,6 +294,11 @@
     <Content Include="Views\Przystanek\Details.cshtml" />
     <Content Include="Views\Przystanek\Edit.cshtml" />
     <Content Include="Views\Przystanek\Index.cshtml" />
+    <Content Include="Views\Trasa\Details_Przystanki.cshtml" />
+    <Content Include="Views\Maszynista\Edytuj_przejazd.cshtml" />
+    <Content Include="Views\Trasa\Dodaj_przystanek.cshtml" />
+    <Content Include="Views\Trasa\Usun_przystanek.cshtml" />
+    <Content Include="Views\Trasa\Edytuj_przystanek.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

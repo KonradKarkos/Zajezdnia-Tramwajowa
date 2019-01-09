@@ -1,0 +1,50 @@
+﻿@model Zajezdnia_Tramwajowa.Przystanek
+
+@{
+    ViewBag.Title = "Usun przystanek";
+}
+
+<h2>Usun przystanek</h2>
+
+<h3>Jesteś pewien, że chcesz usunąć ten przystanek?</h3>
+<div>
+    <h4>Przystanek</h4>
+    <h5 style="color: red">@ViewBag.Exception</h5>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NazwaPrzystanku)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NazwaPrzystanku)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RowVersion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RowVersion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Trasa.NazwaTrasy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Trasa.NazwaTrasy)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Usuń" class="btn btn-default" /> |
+            @Html.ActionLink("Powrót do trasy", "Details", new { id = Model.IDTrasy })
+        </div>
+    }
+</div>

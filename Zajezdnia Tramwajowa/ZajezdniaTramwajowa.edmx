@@ -144,7 +144,7 @@
           <Property Name="Imie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Nazwisko" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Przejazd" Relationship="Self.FK__Przejazd__IDMasz__3E52440B" FromRole="Maszynista" ToRole="Przejazd" />
-          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" ConcurrencyMode="None" />
+          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" ConcurrencyMode="Fixed" />
         </EntityType>
         <EntityType Name="Przejazd">
           <Key>
@@ -158,7 +158,7 @@
           <NavigationProperty Name="Maszynista" Relationship="Self.FK__Przejazd__IDMasz__3E52440B" FromRole="Przejazd" ToRole="Maszynista" />
           <NavigationProperty Name="Tramwaj" Relationship="Self.FK__Przejazd__IDTram__3F466844" FromRole="Przejazd" ToRole="Tramwaj" />
           <NavigationProperty Name="Trasa" Relationship="Self.FK__Przejazd__IDTras__403A8C7D" FromRole="Przejazd" ToRole="Trasa" />
-          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" ConcurrencyMode="None" />
+          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" ConcurrencyMode="Fixed" />
         </EntityType>
         <EntityType Name="Przystanek">
           <Key>
@@ -168,7 +168,7 @@
           <Property Name="IDTrasy" Type="Int32" Nullable="false" />
           <Property Name="NazwaPrzystanku" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Trasa" Relationship="Self.FK__Przystane__IDTra__440B1D61" FromRole="Przystanek" ToRole="Trasa" />
-          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" ConcurrencyMode="None" />
+          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" ConcurrencyMode="Fixed" />
         </EntityType>
         <EntityType Name="Tramwaj">
           <Key>
@@ -177,7 +177,7 @@
           <Property Name="IDTramwaju" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ModelPojazdu" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Przejazd" Relationship="Self.FK__Przejazd__IDTram__3F466844" FromRole="Tramwaj" ToRole="Przejazd" />
-          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" ConcurrencyMode="None" />
+          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" ConcurrencyMode="Fixed" />
         </EntityType>
         <EntityType Name="Trasa">
           <Key>
@@ -187,7 +187,7 @@
           <Property Name="NazwaTrasy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Przejazd" Relationship="Self.FK__Przejazd__IDTras__403A8C7D" FromRole="Trasa" ToRole="Przejazd" />
           <NavigationProperty Name="Przystanek" Relationship="Self.FK__Przystane__IDTra__440B1D61" FromRole="Trasa" ToRole="Przystanek" />
-          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" ConcurrencyMode="None" />
+          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" ConcurrencyMode="Fixed" />
         </EntityType>
         <Association Name="FK__Przejazd__IDMasz__3E52440B">
           <End Role="Maszynista" Type="Self.Maszynista" Multiplicity="1" />

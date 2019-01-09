@@ -1,14 +1,5 @@
 ﻿@model IEnumerable<Zajezdnia_Tramwajowa.Przystanek>
 
-@{
-    ViewBag.Title = "Przystanki";
-}
-
-<h2>Lista Przystanków</h2>
-
-<p>
-    @Html.ActionLink("Stwórz nowy", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -19,8 +10,10 @@
         </th>
         <th></th>
     </tr>
-
-@foreach (var item in Model) {
+@if (Model != null)
+{
+    foreach (var item in Model)
+    {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.NazwaPrzystanku)
@@ -29,11 +22,11 @@
             @Html.DisplayFor(modelItem => item.Trasa.NazwaTrasy)
         </td>
         <td>
-            @Html.ActionLink("Edytuj", "Edit", new { id=item.IDPrzystanku }) |
-            @Html.ActionLink("Szczegóły", "Details", new { id=item.IDPrzystanku }) |
-            @Html.ActionLink("Usuń", "Delete", new { id=item.IDPrzystanku })
+            @Html.ActionLink("Edytuj", "Edytuj_przystanek", new { id = item.IDPrzystanku }) |
+            @Html.ActionLink("Usuń", "Usun_przystanek", new { id = item.IDPrzystanku })
         </td>
     </tr>
+    }
 }
 
 </table>

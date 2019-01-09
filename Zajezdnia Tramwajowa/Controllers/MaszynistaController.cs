@@ -125,7 +125,11 @@ namespace Zajezdnia_Tramwajowa.Controllers
         }
         public ActionResult Dodaj_przejazd(int IdPrze)
         {
-            return View(db.Przejazd.Find(IdPrze));
+            Przejazd p = db.Przejazd.Find(IdPrze);
+            p.CzasOdjazdu = DateTime.Now;
+            p.IDTramwaju = 0;
+            p.IDTrasy = 0;
+            return View(p);
         }
 
         [HttpPost]
@@ -172,6 +176,57 @@ namespace Zajezdnia_Tramwajowa.Controllers
             catch
             {
                 return View(m);
+            }
+        }
+        // GET: Przejazd/Edit/5
+        public ActionResult Edytuj_przejazd(int id)
+        {
+            Przejazd przejazd = db.Przejazd.Single(emp => emp.IDPrzejazdu == id);
+            return View(przejazd);
+        }
+
+        // POST: Przejazd/Edit/5
+        [HttpPost]
+        public ActionResult Edytuj_przejazd(int id, Przejazd przejazd)
+        {
+            ViewBag.Exception = null;
+            try
+            {
+                db.Entry(przejazd).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+
+                return RedirectToAction("Index");
+            }
+            catch (DbUpdateConcurrencyException ex)
+            {
+
+                MongoDBClient.InsertError(new ErrorMessage(ex.InnerException.Message, DateTime.Now));
+                ViewBag.Exception = "Ktoś zmienił dane, proszę anuluj obecną operację w celu pobrania najnowszych danych";
+                var entry = ex.Entries.Single();
+                var clientValues = (Przejazd)entry.Entity;
+                var databaseEntry = entry.GetDatabaseValues();
+                var databaseValues = (Przejazd)databaseEntry.ToObject();
+
+
+
+                if (databaseValues.IDMaszynisty != clientValues.IDMaszynisty)
+                    ModelState.AddModelError("ID Motorniczego", "Wartość w bazie danych: "
+                        + databaseValues.IDMaszynisty);
+                if (databaseValues.IDTramwaju != clientValues.IDTramwaju)
+                    ModelState.AddModelError("ID Tramwaju", "Wartość w bazie danych: "
+                        + databaseValues.IDTramwaju);
+                if (databaseValues.IDTrasy != clientValues.IDTrasy)
+                    ModelState.AddModelError("ID Trasy", "Wartość w bazie danych: " + databaseValues.IDTrasy);
+                if (databaseValues.CzasOdjazdu != clientValues.CzasOdjazdu)
+                    ModelState.AddModelError("Czas Odjazdu", "Wartość w bazie danych: " + databaseValues.CzasOdjazdu);
+
+                return View(przejazd);
+            }
+            catch (Exception e)
+            {
+                MongoDBClient.InsertError(new ErrorMessage(e.InnerException.Message, DateTime.Now));
+                ViewBag.Exception = e.InnerException.InnerException.Message;
+                return View(przejazd);
             }
         }
     }

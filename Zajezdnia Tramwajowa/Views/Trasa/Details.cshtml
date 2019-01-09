@@ -20,6 +20,17 @@
 
     </dl>
 </div>
+@if (Model.Przystanek != null)
+{
+    @Html.Partial("~/Views/Trasa/Details_Przystanki.cshtml", Model.Przystanek)
+}
+@if (Model.Przystanek.Count > 0)
+{
+    if (Model.Przystanek.First() != null)
+    {
+        @Html.ActionLink("Dodaj Przystanek", "Dodaj_przystanek", new { IdPrz = Model.Przystanek.First().IDPrzystanku })
+    }
+}
 <p>
     @Html.ActionLink("Edytuj", "Edit", new { id = Model.IDTrasy }) |
     @Html.ActionLink("Powrót do listy", "Index")

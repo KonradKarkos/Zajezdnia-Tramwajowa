@@ -96,6 +96,12 @@ namespace Zajezdnia_Tramwajowa.Controllers
 
                 return View(przejazd);
             }
+            catch (Exception e)
+            {
+                MongoDBClient.InsertError(new ErrorMessage(e.InnerException.Message, DateTime.Now));
+                ViewBag.Exception = e.InnerException.InnerException.Message;
+                return View(przejazd);
+            }
         }
 
         // GET: Przejazd/Delete/5

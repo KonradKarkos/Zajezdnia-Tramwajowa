@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Zajezdnia_Tramwajowa;
+using Zajezdnia_Tramwajowa.MongoDB;
 
 namespace Zajezdnia_Tramwajowa.Controllers
 {
@@ -82,16 +84,43 @@ namespace Zajezdnia_Tramwajowa.Controllers
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IDPrzystanku,IDTrasy,NazwaPrzystanku")] Przystanek przystanek)
+        public ActionResult Edit(int id, Przystanek przystanek)
         {
-            if (ModelState.IsValid)
+            ViewBag.Exception = null;
+            try
             {
-                db.Entry(przystanek).State = EntityState.Modified;
+                db.Entry(przystanek).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
-            ViewBag.IDTrasy = new SelectList(db.Trasa, "IDTrasy", "NazwaTrasy", przystanek.IDTrasy);
-            return View(przystanek);
+            catch (DbUpdateConcurrencyException ex)
+            {
+
+                MongoDBClient.InsertError(new ErrorMessage(ex.InnerException.Message, DateTime.Now));
+                ViewBag.Exception = "Ktoś zmienił dane, proszę anuluj obecną operację w celu pobrania najnowszych danych";
+                var entry = ex.Entries.Single();
+                var clientValues = (Przystanek)entry.Entity;
+                var databaseEntry = entry.GetDatabaseValues();
+                var databaseValues = (Przystanek)databaseEntry.ToObject();
+
+
+
+                if (databaseValues.IDTrasy != clientValues.IDTrasy)
+                    ModelState.AddModelError("ID Trasy", "Wartość w bazie danych: "
+                        + databaseValues.IDTrasy);
+                if (databaseValues.NazwaPrzystanku != clientValues.NazwaPrzystanku)
+                    ModelState.AddModelError("Nazwa Przystanku", "Wartość w bazie danych: "
+                        + databaseValues.NazwaPrzystanku);
+
+                return View(przystanek);
+            }
+            catch (Exception e)
+            {
+                MongoDBClient.InsertError(new ErrorMessage(e.InnerException.Message, DateTime.Now));
+                ViewBag.Exception = e.InnerException.InnerException.Message;
+                return View(przystanek);
+            }
         }
 
         // GET: Przystanek/Delete/5

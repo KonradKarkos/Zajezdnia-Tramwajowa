@@ -4,7 +4,7 @@
     ViewBag.Title = "Usun przejazd";
 }
 
-<h2>Usun przejazd</h2>
+<h2>Usuń przejazd</h2>
 
 <h3>Jesteś pewien?</h3>
 <div>
@@ -49,8 +49,8 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Powrót do listy Motorniczych", "Index")
+            <input type="submit" value="Usuń" class="btn btn-default" /> |
+            @Html.ActionLink("Powrót do motorniczego", "Details", new { id = Model.IDMaszynisty })
         </div>
     }
 </div>
