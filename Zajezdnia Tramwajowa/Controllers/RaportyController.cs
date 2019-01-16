@@ -38,11 +38,6 @@ namespace Zajezdnia_Tramwajowa.Controllers
             return View(Zestawienie);
         }
 
-        public ActionResult NajczesciejUzywaneTram()
-        {
-            return View(db.uzyciePrzystankows.ToList());
-        }
-
         public ActionResult PrzejazdyMotorniczy()
         {
             Dictionary<Maszynista, int[]> Zestawienie = new Dictionary<Maszynista, int[]>();
@@ -67,12 +62,26 @@ namespace Zajezdnia_Tramwajowa.Controllers
 
         public ActionResult NajTramwaje()
         {
-            var list = db.Tramwaj.ToList(); 
-                //(from tramwaj in db.Tramwaj
-                //        join przejazd in db.Przejazd on tramwaj.IDTramwaju equals przejazd.IDTramwaju
-                //        group tramwaj by tramwaj.IDTramwaju into gt orderby gt.Count()
-                //        select new { IDTramwaju = tramwaj.IDTramwaju, IloscPrzejazdow = gt.Count() }).Take(5);
-            return View(list);
+            Dictionary<int, int> Zestawienie = new Dictionary<int, int>();
+            var tramwaj = db.Tramwaj.ToList();
+            var przejazd = db.Tramwaj.ToList();
+
+
+            var list = tramwaj.Join(przejazd,
+                                    tramwaj_w => tramwaj_w.IDTramwaju,
+                                    przejazd_w => przejazd_w.IDTramwaju,
+                                    (tramwaj_w, przejazd_w) => new
+                                    {
+                                        tramwaj_w,
+                                        przejazd_w
+                                    }
+                                        ).GroupBy(x => new { x.tramwaj_w.IDTramwaju }).Select(g => new { IDTramwaju = g.Key.IDTramwaju, Ilosc = g.Sum(x => x.tramwaj_w.Przejazd.Count) }).OrderByDescending(x => x.Ilosc).ToList().Take(5);
+
+            foreach (var element in list)
+            {
+                Zestawienie.Add(element.IDTramwaju, element.Ilosc);
+            }
+            return View(Zestawienie);
         }
     }
 }

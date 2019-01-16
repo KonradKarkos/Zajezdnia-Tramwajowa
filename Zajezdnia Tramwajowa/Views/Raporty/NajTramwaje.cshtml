@@ -1,34 +1,30 @@
-﻿@model IEnumerable<Zajezdnia_Tramwajowa.Tramwaj>
-
+﻿@model Dictionary<int, int>
 @{
-    ViewBag.Title = "NajTramwaje";
+    ViewBag.Title = "Najczęściej używane tramwaje";
 }
-
 <h2>Najczęściej używane tramwaje</h2>
-
-
+ 
 <table class="table">
     <tr>
         <th>
             @Html.DisplayName("ID Tramwaju")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ModelPojazdu)
+            @Html.DisplayName("Liczba przejazdów")
         </th>
         <th></th>
     </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.IDTramwaju)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ModelPojazdu)
-        </td>
-    </tr>
-}
-
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Key)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Value)
+            </td>
+        </tr>
+    }
 </table>
 <p>
     @Html.ActionLink("Powrót do listy raportów", "Index")
