@@ -1,0 +1,41 @@
+﻿@model Zajezdnia_Tramwajowa.Tramwaj
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Usuwanie</h2>
+
+<h3>Jesteś pewien, że chcesz usunąć ten tramwaj z bazy danych?</h3>
+<div>
+    <h4>Tramwaj</h4>
+    <h5 style="color: red">@ViewBag.Exception</h5>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("ID Tramwaju")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IDTramwaju)
+        </dd>
+        <dt>
+            @Html.DisplayName("Model pojazdu")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModelPojazdu)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Usuń" class="btn btn-default" /> |
+            @Html.ActionLink("Powrót do listy", "Index")
+        </div>
+    }
+</div>

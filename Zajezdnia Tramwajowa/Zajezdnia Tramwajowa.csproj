@@ -178,6 +178,7 @@
     <Compile Include="Controllers\PrzejazdController.cs" />
     <Compile Include="Controllers\PrzystanekController.cs" />
     <Compile Include="Controllers\RaportyController.cs" />
+    <Compile Include="Controllers\TramwajsController.cs" />
     <Compile Include="Controllers\TrasaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -308,6 +309,10 @@
     <Content Include="Views\Raporty\Index.cshtml" />
     <Content Include="Views\Raporty\PrzejazdyMotorniczy.cshtml" />
     <Content Include="Views\Raporty\NajTramwaje.cshtml" />
+    <Content Include="Views\Tramwajs\Create.cshtml" />
+    <Content Include="Views\Tramwajs\Delete.cshtml" />
+    <Content Include="Views\Tramwajs\Edit.cshtml" />
+    <Content Include="Views\Tramwajs\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

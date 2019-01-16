@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Zajezdnia_Tramwajowa.Tramwaj>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Lista tramwajów</h2>
+
+<p>
+    @Html.ActionLink("Dodaj nowy", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("ID Tramwaju")
+        </th>
+        <th>
+            @Html.DisplayName("Model pojazdu")
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IDTramwaju)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModelPojazdu)
+        </td>
+        <td>
+            @Html.ActionLink("Edytuj", "Edit", new { id=item.IDTramwaju }) |
+            @Html.ActionLink("Usuń", "Delete", new { id=item.IDTramwaju })
+        </td>
+    </tr>
+}
+
+</table>
