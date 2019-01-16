@@ -177,6 +177,7 @@
     <Compile Include="Controllers\MaszynistaController.cs" />
     <Compile Include="Controllers\PrzejazdController.cs" />
     <Compile Include="Controllers\PrzystanekController.cs" />
+    <Compile Include="Controllers\RaportyController.cs" />
     <Compile Include="Controllers\TrasaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -196,6 +197,9 @@
       <DependentUpon>ZajezdniaTramwajowa.tt</DependentUpon>
     </Compile>
     <Compile Include="Trasa.cs">
+      <DependentUpon>ZajezdniaTramwajowa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="uzyciePrzystankow.cs">
       <DependentUpon>ZajezdniaTramwajowa.tt</DependentUpon>
     </Compile>
     <Compile Include="ZajezdniaTramwajowa.Context.cs">
@@ -299,6 +303,11 @@
     <Content Include="Views\Trasa\Dodaj_przystanek.cshtml" />
     <Content Include="Views\Trasa\Usun_przystanek.cshtml" />
     <Content Include="Views\Trasa\Edytuj_przystanek.cshtml" />
+    <Content Include="Views\Raporty\PrzejazdyMiesieczne.cshtml" />
+    <Content Include="Views\Raporty\NajczesciejUzywane.cshtml" />
+    <Content Include="Views\Raporty\Index.cshtml" />
+    <Content Include="Views\Raporty\PrzejazdyMotorniczy.cshtml" />
+    <Content Include="Views\Raporty\NajTramwaje.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

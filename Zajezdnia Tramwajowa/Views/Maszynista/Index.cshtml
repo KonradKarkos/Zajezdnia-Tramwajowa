@@ -4,7 +4,7 @@
     ViewBag.Title = "Lista motorniczych";
 }
 
-<h2>Maszyniści</h2>
+<h2>Lista motorniczych</h2>
 
 <p>
     @Html.ActionLink("Dodaj przez LINQ", "Create")
@@ -28,23 +28,23 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Stawka)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Imie)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nazwisko)
-        </td>
-        <td>
-            @Html.ActionLink("Edytuj", "Edit", new { id = item.IDMaszynisty }) |
-            @Html.ActionLink("Usuń", "Delete", new { id = item.IDMaszynisty }) |
-            @Html.ActionLink("Przejazdy", "Details", new { id = item.IDMaszynisty })
-        </td>
-    </tr>
-}
-
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stawka)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Imie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nazwisko)
+            </td>
+            <td>
+                @Html.ActionLink("Edytuj", "Edit", new { id = item.IDMaszynisty }) |
+                @Html.ActionLink("Usuń", "Delete", new { id = item.IDMaszynisty }) |
+                @Html.ActionLink("Przejazdy", "Details", new { id = item.IDMaszynisty })
+            </td>
+        </tr>
+    }
 </table>

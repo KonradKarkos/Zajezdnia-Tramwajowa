@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Zajezdnia_Tramwajowa.Tramwaj>
+
+@{
+    ViewBag.Title = "NajTramwaje";
+}
+
+<h2>Najczęściej używane tramwaje</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("ID Tramwaju")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModelPojazdu)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IDTramwaju)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModelPojazdu)
+        </td>
+    </tr>
+}
+
+</table>
+<p>
+    @Html.ActionLink("Powrót do listy raportów", "Index")
+</p>

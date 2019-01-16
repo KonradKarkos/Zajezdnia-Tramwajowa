@@ -14,6 +14,7 @@
         <AssociationConnector Association="ZajezdniaTramwajowaModel.FK__Przejazd__IDTram__3F466844" ManuallyRouted="false" />
         <AssociationConnector Association="ZajezdniaTramwajowaModel.FK__Przejazd__IDTras__403A8C7D" ManuallyRouted="false" />
         <AssociationConnector Association="ZajezdniaTramwajowaModel.FK__Przystane__IDTra__440B1D61" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ZajezdniaTramwajowaModel.uzyciePrzystankow" Width="1.5" PointX="3.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

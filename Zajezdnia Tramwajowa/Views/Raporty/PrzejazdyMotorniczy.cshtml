@@ -1,0 +1,58 @@
+﻿@model Dictionary<Maszynista, int[]>
+
+@{
+    ViewBag.Title = "Przejazdy dla danego motorniczego";
+}
+
+<h2>Przejazdy dla danego motorniczego</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Key.Stawka)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Key.Imie)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Key.Nazwisko)
+        </th>
+        <th>
+            @Html.DisplayName("Najmniejsza liczba przejazdów miesięcznie")
+        </th>
+        <th>
+            @Html.DisplayName("Największa liczba przejazdów miesięcznie")
+        </th>
+        <th>
+            @Html.DisplayName("Średnia liczba przejazdów miesięcznie")
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Key.Stawka)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Key.Imie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Key.Nazwisko)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Value[1])
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Value[2])
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Value[0])
+            </td>
+        </tr>
+    }
+</table>
+<p>
+    @Html.ActionLink("Powrót do listy raportów", "Index")
+</p>

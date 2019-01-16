@@ -1,0 +1,22 @@
+﻿@model IEnumerable<Zajezdnia_Tramwajowa.Maszynista>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Lista dostępnych raportów</h2>
+
+
+<p>
+    @Html.ActionLink("Ilość przejazdów motorniczych w tym miesiącu", "PrzejazdyMiesieczne")
+</p>
+<p>
+    @Html.ActionLink("Najczęściej używane przystanki", "NajczesciejUzywane")
+</p>
+<p>
+    @Html.ActionLink("Najczęściej używane tramwaje", "NajTramwaje")
+</p>
+<p>
+    @Html.ActionLink("Minimalna, maksymalna i średnia ilość przejazdów dla motorniczych w tym roku", "PrzejazdyMotorniczy")
+</p>
+

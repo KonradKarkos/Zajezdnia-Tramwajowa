@@ -97,7 +97,7 @@ namespace Zajezdnia_Tramwajowa.Controllers
             catch (DbUpdateConcurrencyException ex)
             {
 
-                MongoDBClient.InsertError(new ErrorMessage(ex.InnerException.Message, DateTime.Now));
+                MongoDBClient.InsertError(new ErrorMessage("*** Błąd związany z blokowaniem optymistycznym ***", DateTime.Now));
                 ViewBag.Exception = "Ktoś zmienił dane, proszę anuluj obecną operację w celu pobrania najnowszych danych";
                 var entry = ex.Entries.Single();
                 var clientValues = (Przystanek)entry.Entity;
